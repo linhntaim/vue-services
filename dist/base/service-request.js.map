@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/base/service-request.js"],"names":["ServiceRequest","cancel","make"],"mappings":"AAAA,MAAO,MAAMA,CAAAA,cAAe,CACxBC,MAAM,EAAG,CACR,CAEDC,IAAI,EAAG,CACN,CALuB","sourcesContent":["export class ServiceRequest {\r\n    cancel() {\r\n    }\r\n\r\n    make() {\r\n    }\r\n}\r\n"],"file":"service-request.js"}
