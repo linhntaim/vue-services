@@ -1,6 +1,6 @@
 {
     "name": "@dsquare-gbu/vue-services",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "To call any APIs or services in Vue application",
     "main": "dist/index.js",
     "scripts": {

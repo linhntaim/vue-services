@@ -18,7 +18,11 @@ export class ServiceInstance {
     }
 
     addInstanceCallback(name, callback) {
-        this.instanceCallbacks[name] = callback
+        if (typeof this.instance === 'function') {
+            this.instanceCallbacks[name] = callback
+        } else {
+            this.instance = callback(this.instance)
+        }
         return this
     }
 
