@@ -1,2 +1,2 @@
-export{Service}from"./service";export{ServiceError}from"./service-error";export{ServiceFactory}from"./service-factory";export{ServiceInstance}from"./service-instance";
+export{Service}from"./service";export{ServiceError}from"./service-error";export{ServiceFactory}from"./service-factory";export{ServiceInstance}from"./service-instance";export{makeInstance}from"./make-instance";
 //# sourceMappingURL=index.js.map

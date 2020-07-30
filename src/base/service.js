@@ -9,24 +9,12 @@ export class Service {
         this.basePath = basePath
     }
 
-    done(response, doneCallback = null, errorCallback = null) {
-        doneCallback && doneCallback(response, errorCallback)
-    }
-
-    error(error, errorCallback = null) {
-        errorCallback && errorCallback(error)
-    }
-
-    always(alwaysCallback = null) {
-        alwaysCallback && alwaysCallback()
+    service() {
+        return this.serviceInstance.getInstance()
     }
 
     path(relativePath = null) {
-        return (this.basePath ? this.basePath + '/' : '') + relativePath
-    }
-
-    service() {
-        return this.serviceInstance.getInstance()
+        return this.basePath ? this.basePath + (relativePath ? '/' + relativePath : '') : relativePath
     }
 
     params(params) {
@@ -40,6 +28,31 @@ export class Service {
             params[name] = value
         }
         return params
+    }
+
+    appendParams(params, appendingParams) {
+        if (params instanceof FormData) {
+            for (const name in appendingParams) {
+                params.append(name, appendingParams[name])
+            }
+        } else {
+            for (const name in appendingParams) {
+                params[name] = appendingParams[name]
+            }
+        }
+        return params
+    }
+
+    done(response, doneCallback = null, errorCallback = null) {
+        doneCallback && doneCallback(response, errorCallback)
+    }
+
+    error(error, errorCallback = null) {
+        errorCallback && errorCallback(error)
+    }
+
+    always(alwaysCallback = null) {
+        alwaysCallback && alwaysCallback()
     }
 
     request() {

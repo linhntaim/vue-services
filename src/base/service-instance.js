@@ -6,14 +6,14 @@ export class ServiceInstance {
     }
 
     getInstance() {
-        let instance = typeof this.instance === 'function' && !this.instance.prototype.constructor.name ?
+        let instance = typeof this.instance === 'function' && this.instance.prototype.constructor.name === 'instance' ?
             this.instance() : this.instance
         Object.keys(this.instanceCallbacks).forEach(name => instance = this.instanceCallbacks[name](instance))
         return instance
     }
 
     getParams(params) {
-        Object.keys(this.paramsCallbacks).forEach(name => params = this.instanceCallbacks[name](params))
+        Object.keys(this.paramsCallbacks).forEach(name => params = this.paramsCallbacks[name](params))
         return params
     }
 
