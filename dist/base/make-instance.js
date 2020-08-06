@@ -1,2 +1,2 @@
-export function makeInstance(callback){return function instance(){return callback()}}
+"use strict";Object.defineProperty(exports,"__esModule",{value:true});exports.makeInstance=makeInstance;function makeInstance(callback){return function instance(){return callback()}}
 //# sourceMappingURL=make-instance.js.map
