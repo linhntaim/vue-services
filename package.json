@@ -1,6 +1,6 @@
 {
     "name": "@dsquare-gbu/vue-services",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "To call any APIs or services in Vue application",
     "main": "dist/index.js",
     "scripts": {
@@ -27,12 +27,12 @@
     "license": "MIT",
     "devDependencies": {
         "@babel/cli": "^7.10.4",
-        "@babel/core": "^7.10.4",
-        "@babel/preset-env": "^7.10.4",
+        "@babel/core": "^7.11.1",
+        "@babel/preset-env": "^7.11.0",
         "@babel/register": "^7.10.4",
         "chai": "^4.2.0",
         "coveralls": "^3.1.0",
-        "mocha": "^8.0.1",
+        "mocha": "^8.1.1",
         "nyc": "^15.1.0"
     },
     "dependencies": {
