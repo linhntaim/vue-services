@@ -1,5 +1,5 @@
 {
-    "name": "@dsquare-gbu/vue-services",
+    "name": "@linhntaim/vue-services",
     "version": "1.0.9",
     "description": "To call any APIs or services in Vue application",
     "main": "dist/index.js",
@@ -10,7 +10,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@git-gbu.japaneast.cloudapp.azure.com:gbu/vue-services.git"
+        "url": "https://github.com/linhntaim/vue-services.git"
     },
     "keywords": [
         "vue",
@@ -23,7 +23,7 @@
         "request",
         "response"
     ],
-    "author": "Nguyen Tuan Linh <tuanlinh.nguyen@dsquare.com.vn>",
+    "author": "Nguyen Tuan Linh <contact@linhntaim.com> (https://linhntaim.com)",
     "license": "MIT",
     "devDependencies": {
         "@babel/cli": "^7.10.4",
