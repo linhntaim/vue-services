@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.js"],"names":[],"mappings":"sEAAA,oQACA","sourcesContent":["export * from './base'\r\nexport * from './services/axios'"],"file":"index.js"}
+{"version":3,"sources":["../src/index.js"],"names":[],"mappings":"u9BAAA,4BAOA","sourcesContent":["export {\r\n    Service,\r\n    ServiceError,\r\n    ServiceFactory,\r\n    ServiceInstance,\r\n    makeInstance,\r\n} from './base'\r\nexport {\r\n    AxiosService,\r\n    AxiosServiceInstance,\r\n    AxiosServiceRequest,\r\n} from './services/axios'"],"file":"index.js"}

@@ -1,3 +1,3 @@
-export {AxiosService} from './axios-service'
-export {AxiosServiceInstance} from './axios-service-instance'
-export {AxiosServiceRequest} from './axios-service-request'
+export * from './axios-service'
+export * from './axios-service-instance'
+export * from './axios-service-request'
