@@ -1,3 +1,5 @@
+import {ArrayType, ObjectType} from '@dsquare-gbu/vue-utils'
+
 export class Service {
     /**
      *
@@ -7,6 +9,7 @@ export class Service {
     constructor(serviceInstance, basePath = null) {
         this.serviceInstance = serviceInstance
         this.basePath = basePath
+        this.formDataUsed = false
     }
 
     service() {
@@ -17,30 +20,101 @@ export class Service {
         return this.basePath ? this.basePath + (relativePath ? '/' + relativePath : '') : relativePath
     }
 
-    params(params) {
-        return this.serviceInstance.getParams(params)
+    useFormData(used = true) {
+        this.formDataUsed = used
     }
 
+    /**
+     *
+     * @param {FormData|Object} params
+     * @returns {FormData|Object}
+     */
+    params(params) {
+        params = this.serviceInstance.getParams(params)
+        if (this.formDataUsed && !(params instanceof FormData)) {
+            params = this.appendParams(new FormData, params)
+        }
+        this.formDataUsed = false
+        return params
+    }
+
+    /**
+     *
+     * @param {FormData|Object} params
+     * @param {String} name
+     * @param {*} value
+     * @returns {FormData}
+     */
     appendParam(params, name, value) {
         if (params instanceof FormData) {
-            params.append(name, value)
+            this.appendFormData(params, name, value)
         } else {
             params[name] = value
         }
         return params
     }
 
+    /**
+     *
+     * @param {FormData|Object} params
+     * @param {FormData|Object} appendingParams
+     * @returns {FormData|Object}
+     */
     appendParams(params, appendingParams) {
         if (params instanceof FormData) {
-            for (const name in appendingParams) {
-                params.append(name, appendingParams[name])
+            if (appendingParams instanceof FormData) {
+                appendingParams.forEach((value, name) => {
+                    this.appendFormData(params, name, value)
+                })
+                return params
             }
-        } else {
-            for (const name in appendingParams) {
-                params[name] = appendingParams[name]
+            Object.keys(appendingParams).forEach(name => {
+                this.appendFormData(params, name, appendingParams[name])
+            })
+            return params
+        }
+
+        if (appendingParams instanceof FormData) {
+            const combinedParams = new FormData
+            Object.keys(params).forEach(name => {
+                this.appendFormData(combinedParams, name, params[name])
+            })
+            appendingParams.forEach((value, name) => {
+                this.appendFormData(combinedParams, name, value)
+            })
+            return combinedParams
+        }
+
+        Object.keys(appendingParams).forEach(name => {
+            params[name] = appendingParams[name]
+        })
+        return params
+    }
+
+    /**
+     *
+     * @param {FormData} formData
+     * @param {String} name
+     * @param {*} value
+     * @returns {FormData}
+     */
+    appendFormData(formData, name, value) {
+        if (!(value instanceof File || value instanceof Blob)) {
+            if (ArrayType.is(value)) {
+                value.forEach(v => {
+                    this.appendFormData(formData, name + '[]', v)
+                })
+                return formData
+            }
+            if (ObjectType.is(value)) {
+                Object.keys(value).forEach(key => {
+                    this.appendFormData(formData, name + '[' + key + ']', value[key])
+                })
+                return formData
             }
         }
-        return params
+        formData.append(name, value)
+        return formData
     }
 
     done(response, doneCallback = null, errorCallback = null) {
