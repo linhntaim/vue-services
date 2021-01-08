@@ -2,7 +2,7 @@
      *
      * @param {ServiceInstance} serviceInstance
      * @param {string | null} basePath
-     */function Service(serviceInstance){var basePath=arguments.length>1&&arguments[1]!==undefined?arguments[1]:null;_classCallCheck(this,Service);this.serviceInstance=serviceInstance;this.basePath=basePath;this.formDataUsed=false}_createClass(Service,[{key:"service",value:function service(){return this.serviceInstance.getInstance()}},{key:"path",value:function path(){var relativePath=arguments.length>0&&arguments[0]!==undefined?arguments[0]:null;return this.basePath?this.basePath+(relativePath?"/"+relativePath:""):relativePath}},{key:"useFormData",value:function useFormData(){var used=arguments.length>0&&arguments[0]!==undefined?arguments[0]:true;this.formDataUsed=used}/**
+     */function Service(serviceInstance){var basePath=arguments.length>1&&arguments[1]!==undefined?arguments[1]:null;_classCallCheck(this,Service);this.serviceInstance=serviceInstance;this.basePath=basePath;this.formDataUsed=false}_createClass(Service,[{key:"service",value:function service(){return this.serviceInstance.getInstance()}},{key:"path",value:function path(){var relativePath=arguments.length>0&&arguments[0]!==undefined?arguments[0]:null;return this.basePath?this.basePath+(relativePath?"/"+relativePath:""):relativePath}},{key:"useFormData",value:function useFormData(){var used=arguments.length>0&&arguments[0]!==undefined?arguments[0]:true;this.formDataUsed=used;return this}/**
      *
      * @param {FormData|Object} params
      * @returns {FormData|Object}

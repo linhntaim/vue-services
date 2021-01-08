@@ -22,6 +22,7 @@ export class Service {
 
     useFormData(used = true) {
         this.formDataUsed = used
+        return this
     }
 
     /**
