@@ -1,4 +1,4 @@
-import {ArrayType, ObjectType} from '@dsquare-gbu/vue-utils'
+import {TypeArray, TypeObject} from '@dsquare-gbu/vue-utils'
 
 export class Service {
     /**
@@ -101,13 +101,13 @@ export class Service {
      */
     appendFormData(formData, name, value) {
         if (!(value instanceof File || value instanceof Blob)) {
-            if (ArrayType.is(value)) {
+            if (TypeArray.is(value)) {
                 value.forEach(v => {
                     this.appendFormData(formData, name + '[]', v)
                 })
                 return formData
             }
-            if (ObjectType.is(value)) {
+            if (TypeObject.is(value)) {
                 Object.keys(value).forEach(key => {
                     this.appendFormData(formData, name + '[' + key + ']', value[key])
                 })
