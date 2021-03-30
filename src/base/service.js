@@ -1,4 +1,4 @@
-import {TypeArray, TypeObject} from '@dsquare-gbu/vue-utils'
+import {TypeArray, TypeObject} from '@linhntaim/vue-utils'
 
 export class Service {
     /**
