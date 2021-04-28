@@ -1,6 +1,6 @@
 {
     "name": "@linhntaim/vue-services",
-    "version": "1.4.1",
+    "version": "1.4.5",
     "description": "To call any APIs or services in Vue application",
     "main": "dist/index.js",
     "scripts": {
@@ -36,7 +36,7 @@
         "nyc": "^15.1.0"
     },
     "dependencies": {
-        "@linhntaim/vue-utils": "^1.4.1",
+        "@linhntaim/vue-utils": "^1.4.6",
         "axios": "^0.21.1"
     }
 }
